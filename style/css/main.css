@@ -1,0 +1,984 @@
+/* Aneru - 2018 */
+/* ============ */
+
+/* PAGE --> INDEX */
+
+@font-face {
+    font-family: 'Expletus Sans Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Expletus Sans Medium'), url('../webfonts/ExpletusSans-Medium.woff') format('woff');
+}
+
+body {
+    padding: 0 0;
+    margin: 0 0;
+}
+
+.l-wrapper {
+    display: grid;
+}
+
+@media(min-width: 30em) and (max-width: 99.9em) {
+    .l-wrapper {
+        grid-template-columns: repeat(12, minmax(auto, 1fr));
+        grid-template-rows: 8rem 5rem 36rem 65rem 20rem 25rem;
+        grid-template-areas:
+            "header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top"
+            "header header header header header header header header header header header header"
+            "banner banner banner banner banner banner banner banner banner banner banner banner"
+            "menu menu menu main main main main main main main main main"
+            "menu menu menu main main main main main main main main main"
+            "footer footer footer footer footer footer footer footer footer footer footer footer"
+            ;
+    }
+
+    .l-header-top {
+        grid-area: header-top;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+    }
+
+    .l-header {
+        grid-area: header;
+        background-color: #2f3640;
+        width: 100%;
+        z-index: 1;
+        top: 5rem;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #2f3640;
+        z-index: 1;
+        height: 5rem;
+    }
+
+    .after {
+        position: relative;
+        width: 100%;
+        height: 0rem;
+        display: none;
+    }
+
+    .after::after {
+        content: '';
+        display: block;
+        position: fixed;
+        z-index: 1;
+        bottom: .6rem;
+        border-top: 2.5em solid #00cfd0; 
+        border-left: 30px solid transparent; 
+        border-right: 30px solid transparent; 
+        height: 0; 
+        width: 30em; 
+        top: 5rem;
+        left: 30%;
+    }
+
+    .l-banner {
+        grid-area: banner;
+        background-color: #ffffff;
+        position: relative;
+        top: 0rem;
+    }
+
+    .l-main {
+        grid-area: main;
+        background-color: #ffffff;
+        position: relative;
+        top: 5rem;
+    }
+
+    .l-menu {
+        grid-area: menu;
+        background-color: #ffffff;
+        position: relative;
+        top: 5rem;
+    }
+
+    .l-footer {
+        grid-area: footer;
+        background-color: #00cfd0;
+        position: relative;
+        top: 5rem;
+    }
+
+    /* Header Top */
+
+    .nomeEmpresa {
+        font-family: 'Expletus Sans Medium';
+        font-size: 2.8rem;
+        position: relative;
+        width: 20%;
+        margin-left: auto;
+        margin-right: auto;
+        top: -1.5rem;
+    }
+
+    .linkEmpresa {
+        text-decoration: none;
+        color: #00cfd0;
+        padding: 2px;
+    }
+
+    .redesSociais {
+        position: relative;
+        width: 25%;
+        height: auto;
+        left: 2%;
+        top: 3rem;
+    }
+
+    .listaRedes {
+        position: relative;
+        width: 80%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        transform: translateX(22%);
+    }
+
+    .celulaListaRedes {
+        list-style: none;
+    }
+
+    .linkListaRedes {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: #2f3640;
+        margin: 0 10px;
+        transition: 500ms;
+    }
+
+    .linkListaRedes > i {
+        position: relative;
+        top: .4rem;
+    }
+
+    .linkListaRedes > span {
+        position: absolute;
+        transition: transform 500ms;
+    }
+
+    .linkListaRedes > span:nth-child(1), .linkListaRedes > span:nth-child(3) {
+        width: 100%;
+        height: 2px;
+        background: #2f3640;
+    }
+
+    .linkListaRedes > span:nth-child(1) {
+        top: 0;
+        left: 0;
+        transform-origin: right;
+    }
+
+    .linkListaRedes:hover > span:nth-child(1) {
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 500ms;
+    }
+
+    .linkListaRedes > span:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        transform-origin: left;
+    }
+
+    .linkListaRedes:hover > span:nth-child(3) {
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 500ms;
+    }
+
+    .linkListaRedes > span:nth-child(2), .linkListaRedes > span:nth-child(4) {
+        width: 2px;
+        height: 100%;
+        background: #2f3640;
+    }
+
+    .linkListaRedes > span:nth-child(2) {
+        top: 0;
+        left: 0;
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+
+    .linkListaRedes:hover > span:nth-child(2) {
+        transform: scaleY(1);
+        transform-origin: top;
+        transition: transform 500ms;
+    }
+
+    .linkListaRedes > span:nth-child(4) {
+        top: 0;
+        right: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    .linkListaRedes:hover > span:nth-child(4) {
+        transform: scaleY(1);
+        transform-origin: bottom;
+        transition: transform 500ms;
+    }
+
+    .buscaBoxHeader {
+        position: relative;
+        top: -6.4rem;
+        right: 6rem;
+        background: #2f3640;
+        height: 25px;
+        border-radius: 40px;
+        padding: 5px;
+        width: 15rem;
+        float: right;
+    }
+
+    .formPesquisaHeader {
+        position: relative;
+        float: right;
+    }
+
+    .pesquisaBtnHeader {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #2f3640;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        position: relative;
+    }
+
+    .pesquisaBtnHeader > i {
+        font-size: 17px;
+    }
+
+    .pesquisaTxtHeader {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 0;
+        font-size: 13px;
+        line-height: 25px;
+        width: 13rem;
+        float: left;
+        color: #ffffff;
+    }
+
+    /* Header */
+
+    .menuHeader {
+        position: relative;
+        width: 30%;
+        margin: 0 0;
+        padding: 0 0;
+        height: 5rem;
+        font-family: 'Titillium Web', sans-serif;
+        float: left;
+    }
+
+    .celulaMenuHeader {
+        display: inline-block;
+        display: -webkit-inline-box;
+        list-style: none;
+        position: relative;
+        top: 0;
+        height: 100%;
+        text-align: center;
+        line-height: 4.8rem;
+        padding: 0 2rem;
+    }
+
+    .linkMenuHeader {
+        text-decoration: none;
+        color: rgb(61, 236, 236);
+        height: 100%;
+    }
+
+    .celulaMenuHeader:hover {
+        background-color: rgba(0,0,0,0.6);
+    }
+
+    .modalMenuHeader {
+        display: none;
+        position: relative;
+        width: 100%;
+        height: 25rem;
+        background: #82ff05;
+        z-index: 99;
+        top: 5rem;
+    }
+
+    .categoriasMenu {
+        position: relative;
+        width: 10rem;
+        text-align: center;
+        height: 100%;
+    }
+
+    .listaCategoriasMenu {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        top: -.3rem;
+    }
+
+    .celulaCategoriasMenu {
+        list-style: none;
+        font-family: 'Titillium Web', sans-serif;
+        height: 3rem;
+        position: relative;
+        width: 100%;
+        display: inline-block;
+        line-height: 2.9rem;
+        cursor: pointer;
+        border-right: #2f3640 solid 2px;
+    }
+
+    .celulaCategoriasMenu:hover {
+        background: #2f3640;
+        color: #00cfd0;
+    }
+
+    .linkMenuGeral {
+        display: none;
+        background: transparent;
+        position: absolute;
+        height: 25rem;
+        margin: 0;
+        width: 86vw;
+        left: 101%;
+        top: 0rem;
+    }
+
+    .linkMenu_1 {
+        
+    }
+
+    .linkMenu_2 {
+        
+    }
+
+    .usuarioHeader {
+        position: relative;
+        width: 30%;
+        margin: 0 0;
+        padding: 0 0;
+        font-family: 'Titillium Web', sans-serif;
+        float: right;
+        height: 5rem;
+    }
+
+    .celulaUsuaurioHeader {
+        display: -webkit-inline-box;
+        list-style: none;
+        position: relative;
+        top: 0;
+        height: 100%;
+        text-align: center;
+        line-height: 4.8rem;
+        padding: 0 2rem;
+        float: right;
+    }
+
+    .linkUsuaurioHeader {
+        text-decoration: none;
+        color: rgb(61, 236, 236);
+        height: 100%;
+    }
+
+    .celulaUsuaurioHeader:hover {
+        background-color: rgba(0,0,0,0.6);
+    }
+
+    .buscaBox {
+        position: fixed;
+        top: 6.2rem;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: #2f3640;
+        height: 25px;
+        border-radius: 40px;
+        padding: 5px;
+        z-index: 3;
+        display: none;
+    }
+
+    .buscaBox:hover > .formPesquisa > .pesquisaTxt {
+        width: 240px;
+        padding: 0 6px;
+    }
+
+    .buscaBox:hover > .formPesquisa > .pesquisaBtn {
+        background: white;
+        color: black;
+        padding: -.15em;
+    }
+
+    .pesquisaBtn {
+        color: #e84118;
+        float: right;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #2f3640;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 400ms;
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+    }
+
+    .pesquisaBtn > i {
+        font-size: 17px;
+    }
+
+    .pesquisaTxt {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: white;
+        font-size: 13px;
+        transition: 400ms cubic-bezier(.18,.89,.32,1.28);
+        line-height: 25px;
+        width: 0px;
+    }
+
+
+    /* modal */
+
+    .modal {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6);
+        position: fixed;
+        top: 0;
+        z-index: 9999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        width: 18rem;
+        height: 20rem;
+        background-color: #ffffff;
+        border-radius: 4px;
+        text-align: center;
+        padding: 1rem;
+        border: 1px solid #888;
+    }
+
+    .close {
+        cursor: pointer;
+        position: relative;
+        font-size: 2rem;
+        float: right;
+        top: -.8rem;
+    }
+
+    .tituloLog{
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 2rem;
+        color: black;
+        margin: .5rem .5rem;
+        position: relative;
+        width: 40%;
+        left: 27%;
+    }
+
+    .accountTxt{
+        font-family: 'Titillium Web', sans-serif;
+        position: relative;
+        margin: .5rem auto;
+    }
+
+    .accountTxt > a {
+        text-decoration: none;
+        color: #00cfd0;
+    }
+
+    .emailTxt, .senhaLogTxt {
+        position: relative;
+        display: block;
+        width: 80%;
+        height: 30px;
+        margin: 0 auto;
+        top: 1rem;
+        font-family: 'Titillium Web', sans-serif;
+        box-sizing: border-box;
+        transition: 300ms;
+        border-style: solid;
+        padding-left: 30px;
+    }
+
+    .emailTxt:hover, .senhaLogTxt:hover{
+        border-color: #00cfd0;
+        border-style: solid;
+    }
+
+    .inputWithIcon i{
+        position: relative;
+        left: -6.1rem;
+        top: -.45rem;
+        transition: 300ms;
+    }
+
+    .inputWithIcon .emailTxt:focus + i {
+        color: #00cfd0;
+    }
+
+    .inputWithIcon .senhaLogTxt:focus + i {
+        color: #00cfd0;
+    }
+
+    .btnForm{
+        position: relative;
+        display: block;
+        width: 80%;
+        height: 30px;
+        margin: 1rem auto;
+        top: 2rem;
+        font-family: 'Titillium Web', sans-serif;
+        background-color: rgb(248, 19, 19);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .btnForm{
+        position: relative;
+        display: block;
+        width: 80%;
+        height: 30px;
+        margin: 1rem auto;
+        top: .5rem;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 15px;
+        background-color: #2f3640;
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 300ms;
+    }
+
+    .btnForm:hover, .btnFormReg:hover{
+        background-color: #00cfd0;
+        color: black;
+    }
+
+    .close, .closeReg {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        position: relative;
+        top: -.4rem;
+        font-weight: bold;
+    }
+
+    .close:hover, .close:focus, .closeReg:hover, .closeReg:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+    .forgotTxt{
+        font-family: 'Titillium Web', sans-serif;
+        position: relative;
+        margin: .5rem auto;
+        opacity: 0.5;
+        top: 2.5rem;
+    }
+
+    .forgotTxt a{
+        text-decoration: none;
+        color: #00cfd0;
+    }
+
+    /* Modal Registro */
+
+    .modalRegistro{
+        background-color: rgba(0,0,0,0.6);
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        top: 0;
+        position: fixed;
+        left: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content-registro {
+        background-color: #f5f6fa;
+        padding: 1rem;
+        border: 1px solid #888;
+        width: 30%;
+        height: 34rem;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .nomeTxt, .sobrenomeTxt, .genero, .cpfTxt, .telTxt, .emailRegTxt, .senhaRegTxt {
+        position: relative;
+        display: block;
+        width: 80%;
+        height: 30px;
+        margin: 0 auto;
+        top: 1rem;
+        font-family: 'Titillium Web', sans-serif;
+        box-sizing: border-box;
+        transition: 300ms;
+        border-style: solid;
+        padding-left: 5px;
+        margin-top: .7rem;
+    }
+
+    .nomeTxt:hover, .sobrenomeTxt:hover, .genero:hover, .cpfTxt:hover, .telTxt:hover, .emailRegTxt:hover, .senhaRegTxt:hover {
+        border-color: #00cfd0;
+        border-style: solid;
+    }
+
+    .tituloReg {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 2rem;
+        color: black;
+        margin: .5rem .5rem;
+        position: relative;
+    }
+
+    .btnFormReg{
+        position: relative;
+        display: block;
+        width: 80%;
+        height: 30px;
+        margin: 1rem auto;
+        top: 1.4rem;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 15px;
+        background-color: #2f3640;
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 300ms;
+    }
+
+    .accountRegTxt{
+        font-family: 'Titillium Web', sans-serif;
+        position: relative;
+        margin: .5rem auto;
+        top: 3.5rem;
+    }
+
+    .accountRegTxt > a {
+        text-decoration: none;
+        color: #00cfd0;
+    }
+
+    /* Slideshow */
+
+    .mySlides {
+        display:none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .imgSlide {
+        vertical-align: middle;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+      position: relative;
+      margin: auto;
+      height: 100%;
+      width: 100%;
+    }
+    
+    /* Next & previous buttons */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+    }
+    
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+    
+    /* Caption text */
+    .divBtnDentroSlide {
+        position: relative;
+        top: -15rem;
+        margin: 0 0;
+        padding: 0 0;
+        left: 70%;
+    }
+
+    .btnDentroSlide {
+        width: 10rem;
+        height: 3.8rem;
+        border: none;
+        background: #82ff05;
+    }
+
+    .linkBtnDentroSlide {
+        text-decoration: none;
+        color: #2f3640;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 1.6rem;
+    }
+    
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+    
+    /* The dots/bullets/indicators */
+    .dot {
+      cursor:pointer;
+      height: 13px;
+      width: 13px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+    
+    .active, .dot:hover {
+      background-color: #717171;
+    }
+    
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+    
+    @-webkit-keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
+    
+    @keyframes fade {
+      from {opacity: .4}
+    to {opacity: 1}
+    }
+
+
+    /* PAGINA ---> comofuncionamos_2.php */
+    /* =============================== */
+
+    .l-wrapper_2 {
+        display: grid;
+    }
+    
+    .l-wrapper_2 {
+        grid-template-columns: repeat(12, minmax(auto, 1fr));
+        grid-template-rows: 8rem 5rem 65rem 25rem;
+        grid-template-areas:
+            "header-top_2 header-top_2 header-top_2 header-top_2 header-top_2 header-top_2 header-top_2 header-top_2 header-top_2 header-top_2 header-top_2 header-top_2"
+            "header_2 header_2 header_2 header_2 header_2 header_2 header_2 header_2 header_2 header_2 header_2 header_2"
+            "main_2 main_2 main_2 main_2 main_2 main_2 main_2 main_2 main_2 main_2 main_2 main_2"
+            "footer_2 footer_2 footer_2 footer_2 footer_2 footer_2 footer_2 footer_2 footer_2 footer_2 footer_2 footer_2"
+            ;
+    }
+
+    .l-header-top_2 {
+        grid-area: header-top_2;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+        mix-blend-mode: multiply;
+    }
+
+    .l-header_2 {
+        grid-area: header_2;
+        background-color: #2f3640;
+        width: 100%;
+        z-index: 2;
+        top: 5rem;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #2f3640;
+        z-index: 2;
+        height: 5rem;
+    }
+
+    .after {
+        position: relative;
+        width: 100%;
+        height: 0rem;
+        display: none;
+    }
+
+    .after::after {
+        content: '';
+        display: block;
+        position: fixed;
+        z-index: 1;
+        bottom: .6rem;
+        border-top: 2.5em solid #00cfd0; 
+        border-left: 30px solid transparent; 
+        border-right: 30px solid transparent; 
+        height: 0; 
+        width: 30em; 
+        top: 5rem;
+        left: 30%;
+    }
+
+    .l-main_2 {
+        grid-area: main_2;
+        background-color: #ffffff;
+        position: relative;
+    }
+
+    .l-footer_2 {
+        grid-area: footer_2;
+        background-color: #00cfd0;
+        position: relative;
+    }
+
+    /* MAIN --> Pagina: comofuncionamos.html */
+
+    .tituloPaginaComoFuncionamos {
+        font-family: 'Titillium Web', sans-serif;
+        width: 28%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        top: 2rem;
+        letter-spacing: .5px;
+        font-size: 2rem;
+    }
+
+    .box {
+        position: relative;
+        padding: 8px;
+    }
+
+    .subtituloPaginaComoFuncionamos {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        color: #82ff05;
+        background-color: rgba(0,0,0,0.6);
+    }
+
+    .subt1 {
+        top: 7.5rem;
+        left: 15%;
+        width: 16%;
+    }
+
+    .img1 {
+        clip-path: polygon(20% 0, 95% 10%, 100% 60%, 5% 90%);
+        shape-outside: polygon(20% 0, 95% 10%, 100% 60%, 5% 90%);
+        float: left;
+        width: 25rem;
+        margin-right: 2rem;
+        margin-left: 5rem;
+        margin-bottom: 1rem;
+    }
+
+    .parag {
+        font-family: 'Titillium Web', sans-serif;
+        text-align: justify;
+        line-height: 30px;
+        text-indent: 2.5rem;
+        font-weight: 300;
+        font-size: 1.05rem;
+    }
+
+    .elementParag1{
+        clear: right;
+        padding-right: 8rem;
+        padding-left: 8rem;
+    }
+
+    .linha1 {
+        position: relative;
+        top: 1.8rem;
+        width: 75%;
+    }
+
+    .subt2 {
+        top: 9rem;
+        left: 71%;
+        width: 18%;
+    }
+
+    .img2 {
+        clip-path: polygon(22% 0, 95% 20%, 100% 100%, 0 80%);
+        shape-outside: polygon(22% 0, 95% 20%, 100% 100%, 0 80%);
+        float: right;
+        width: 25rem;
+        margin-right: 5rem;
+        margin-left: 2rem;
+    }
+
+    .elementParag2 {
+        clear: left;
+        padding-left: 8rem;
+        padding-right: 8rem;
+        margin-top: 0rem;
+    }
+
+}
