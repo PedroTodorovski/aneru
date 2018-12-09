@@ -140,7 +140,7 @@
         jQuery('body').on('change', '#product_category', function(e){
             e.preventDefault();
             var categoryId = jQuery(this).val();
-            // send ajax to the return ajax file
+            // send ajax to the return ajax file 
             jQuery.ajax({
                 url: 'return_subcateg_ajax.php',
                 data: {'categoryId':categoryId},
