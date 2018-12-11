@@ -327,7 +327,6 @@ body {
     .categoriasMenu {
         position: relative;
         width: 10rem;
-        text-align: center;
         height: 100%;
     }
 
@@ -336,6 +335,7 @@ body {
         padding: 0;
         position: relative;
         top: -.3rem;
+        text-align: center;
     }
 
     .celulaCategoriasMenu {
@@ -364,6 +364,8 @@ body {
         width: 86vw;
         left: 101%;
         top: 0rem;
+        overflow: hidden;
+        flex-direction: row;
     }
 
     .linkMenu_1 {
@@ -372,6 +374,34 @@ body {
 
     .linkMenu_2 {
         
+    }
+
+    .sectionSub {
+        position: relative;
+        width: 12.5rem;
+        height: auto;
+        background: none;
+        text-align: center;
+        top: 2rem;
+    }
+
+    .linkSubCatergoria {
+        text-decoration: none;
+        color: #ffffff;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 1.2rem;
+    }
+
+    .linkTipo {
+        color: #2f3640;
+        text-decoration: none;
+        font-family: 'Titillium Web', sans-serif;
+        display: block;
+    }
+
+    .sectionTipo {
+        position: relative;
+        text-align: center;
     }
 
     .usuarioHeader {

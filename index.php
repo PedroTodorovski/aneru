@@ -96,27 +96,22 @@
                 <div id="modalMenuHeader" class="modalMenuHeader" onmouseover="javascript:mostra(); " onmouseout="javascript:esconde();">
                     <div class="categoriasMenu">
                         <ul class="listaCategoriasMenu">
-                            <!-- <li class="celulaCategoriasMenu">Mercado</li>
-                            <li class="celulaCategoriasMenu">Eletrônicos</li>
-                            <li class="celulaCategoriasMenu">Oficina</li>
-                            <li class="celulaCategoriasMenu">Camping</li>
-                            <li class="celulaCategoriasMenu">Esportes</li> -->
                             <?php buscarCategs(); ?>
                         </ul>
                         <div id='linkMenu_1' class='linkMenuGeral linkMenu_1' onmouseover='javascript:showMenu1(); ' onmouseout='javascript:hideMenu1();'>
-                            <?php buscarSubCateg(); ?>
+                            <?php buscarSubCateg(1); ?>
                         </div>
                         <div id='linkMenu_2' class='linkMenuGeral linkMenu_2' onmouseover='javascript:showMenu2(); ' onmouseout='javascript:hideMenu2();'>
-                        TESTEEEEEE2
+                            <?php buscarSubCateg(2); ?>
                         </div>
                         <div id='linkMenu_3' class='linkMenuGeral linkMenu_3' onmouseover='javascript:showMenu3(); ' onmouseout='javascript:hideMenu3();'>
-                        TESTEEEEEE3
+                            <?php buscarSubCateg(3); ?>
                         </div>
                         <div id='linkMenu_4' class='linkMenuGeral linkMenu_4' onmouseover='javascript:showMenu4(); ' onmouseout='javascript:hideMenu4();'>
-                        TESTEEEEEE4
+                            <?php buscarSubCateg(4); ?>
                         </div>
                         <div id='linkMenu_5' class='linkMenuGeral linkMenu_5' onmouseover='javascript:showMenu5(); ' onmouseout='javascript:hideMenu5();'>
-                        TESTEEEEEE5
+                            <?php buscarSubCateg(5); ?>
                         </div>
                     </div>
                 </div>

@@ -43,21 +43,45 @@ if(mysqli_connect_errno()) {
         }
     }
 
-    function buscarSubCateg() {
+    function buscarSubCateg($categ_id) {
 
         global $con;
 
-        $buscar_subcateg = "SELECT * FROM subcateg WHERE categ_id = '1'";
+        $buscar_subcateg = "SELECT * FROM subcateg WHERE categ_id = '$categ_id'";
 
         $run_subcateg = mysqli_query($con, $buscar_subcateg);
 
+        $i=1;
         while ($row_subcateg = mysqli_fetch_array($run_subcateg)) {
 
             $subcateg_id = $row_subcateg['subcateg_id'];
             $subcateg_name = $row_subcateg['subcateg_name'];
+            $tip = buscarTipos($subcateg_id);
 
-            echo "<a class='linkTeste' href='#'>$subcateg_name</a>";
+
+
+            echo '<div class="sectionSub"><a class="linkSubCatergoria" href="produto/'.$subcateg_name.'.php">'.$subcateg_name.'</a><div class="sectionTipo"><a class="linkTipo" href="produto/'.$subcateg_name.'.php">'.$tip.'</a></div></div>';
+            $i++;
         }
+    }
+
+    function buscarTipos($subcateg_id) {
+
+        global $con;
+
+        $buscar_tipo = "SELECT * FROM tipoprod WHERE subcateg_id = '$subcateg_id'";
+
+        $run_tipo = mysqli_query($con, $buscar_tipo);
+        $str = '';
+        while ($row_tipo = mysqli_fetch_array($run_tipo)) {
+
+            $tipo_id = $row_tipo['tipoprod_id'];
+            $tipo_name = $row_tipo['tipoprod_name'];
+
+            $str = $str."$tipo_name";
+
+        }
+        return $str;
     }
 
 ?>

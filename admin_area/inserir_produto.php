@@ -21,7 +21,30 @@
                     </tr>
                     <tr>
                         <td align="center"><b>Título do produto:</b></td>
-                        <td><input type="text" name="titulo_produto" size="60" required></td>
+                        <td><input type="text" name="nome_produto" size="60" required></td>
+                    </tr>
+                    <tr>
+                    <td align="center"><b>Marca do produto:</b></td>
+                    <td>
+                        <select name="marca_produto" id="">
+                                <option>Selecione a marca:</option>
+                                <?php
+                                
+                                $buscar_marca = "SELECT * FROM marcas";
+
+                                $run_marca = mysqli_query($con, $buscar_marca);
+
+                                while ($row_marca = mysqli_fetch_array($run_marca)) {
+
+                                    $marca_id = $row_marca['marca_id'];
+                                    $marca_titulo = $row_marca['marca_titulo'];
+
+                                    echo "<option value='$marca_id'>$marca_titulo</option>";
+                                }
+
+                                ?>
+                            </select>
+                    </td>
                     </tr>
                     <tr>
                         <td align="center"><b>Categoria do produto:</b></td>
@@ -51,68 +74,15 @@
                     <td>
                         <select name="subcateg_produto" id="product_subcategory">
                             <option>Selecione a subcategoria:</option>
-                            <?php
-
-                                $buscar_subcateg = "SELECT * FROM subcateg WHERE categ_id = $categ_id ORDER BY subcateg_name";
-
-                                $run_subcateg = mysqli_query($con, $buscar_subcateg);
-
-                                while ($row_subcateg = mysqli_fetch_array($run_subcateg)) {
-
-                                    $subcateg_id = $row_subcateg['subcateg_id'];
-                                    $subcateg_name = $row_subcateg['subcateg_name'];
-
-                                    echo "<option value='$subcateg_id'>$subcateg_name</option>";
-                                }
-
-                            ?>
                         </select>
                     </td>
                     </tr>
                     <tr>
                     <td align="center"><b>Tipo do produto:</b></td>
                     <td>
-                        <select name="tipo_produto" id="">
+                        <select name="tipo_produto" id="product_type">
                             <option>Selecione o tipo:</option>
-                            <?php
-                                
-                                $buscar_tipoprod = "SELECT * FROM tipoprod";
-
-                                $run_tipoprod = mysqli_query($con, $buscar_tipoprod);
-
-                                while ($row_tipoprod = mysqli_fetch_array($run_tipoprod)) {
-
-                                    $tipoprod_id = $row_tipoprod['tipoprod_id'];
-                                    $tipoprod_name = $row_tipoprod['tipoprod_name'];
-
-                                    echo "<option value='$tipoprod_id'>$tipoprod_name</option>";
-                                }
-
-                            ?>
                         </select>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td align="center"><b>Marca do produto:</b></td>
-                        <td>
-                        <select name="marca_produto" id="">
-                                <option>Selecione a marca:</option>
-                                <?php
-                                
-                                $buscar_marca = "SELECT * FROM marcas";
-
-                                $run_marca = mysqli_query($con, $buscar_marca);
-
-                                while ($row_marca = mysqli_fetch_array($run_marca)) {
-
-                                    $marca_id = $row_marca['marca_id'];
-                                    $marca_titulo = $row_marca['marca_titulo'];
-
-                                    echo "<option value='$marca_id'>$marca_titulo</option>";
-                                }
-
-                                ?>
-                            </select>
                     </td>
                     </tr>
                     <tr>
@@ -150,15 +120,31 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        jQuery('body').on('change', '#product_subcategory', function(e){
+            e.preventDefault();
+            var subcategoryId = jQuery(this).val();
+            // send ajax to the return ajax file
+            jQuery.ajax({
+                url: 'return_tipo_ajax.php',
+                data: {'subcategoryId':subcategoryId},
+                type: 'POST',
+            }).done(function(data){
+                jQuery('#product_type').html(data);
+            });
+        });
+    </script>
 </body>
 </html>
 <?php
 
     if(isset($_POST['cadastrar_produto'])) {
 
-        $titulo_produto = $_POST['titulo_produto'];
-        $categoria_produto = $_POST['categoria_produto'];
+        $nome_produto = $_POST['nome_produto'];
         $marca_produto = $_POST['marca_produto'];
+        $categoria_produto = $_POST['categoria_produto'];
+        $subcategoria_produto = $_POST['subcateg_produto'];
+        $tipo_produto = $_POST['tipo_produto'];
         $preco_produto = $_POST['preco_produto'];
         $descricao_produto = $_POST['descricao_produto'];
         $keywords_produto = $_POST['keywords_produto'];
@@ -168,8 +154,8 @@
 
         move_uploaded_file($imagem_produto_tmp, "imagens_produtos/$imagem_produto");
 
-        echo $inserir_produto = "INSERT INTO produtos (produto_titulo, produto_cat, produto_marca, produto_preco, produto_desc, produto_keywords, produto_img) 
-        VALUES ('$titulo_produto', '$categoria_produto', '$marca_produto', '$preco_produto', '$descricao_produto', '$keywords_produto', '$imagem_produto')";
+        echo $inserir_produto = "INSERT INTO produtos (produto_nome, produto_marca, produto_cat, produto_subcateg, produto_tipo, produto_preco, produto_desc, produto_keywords, produto_img) 
+        VALUES ('$nome_produto', '$marca_produto', '$categoria_produto', '$subcategoria_produto', '$tipo_produto', '$preco_produto', '$descricao_produto', '$keywords_produto', '$imagem_produto')";
 
         $inserir_pro = mysqli_query($con, $inserir_produto);
 

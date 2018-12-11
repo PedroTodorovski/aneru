@@ -113,7 +113,7 @@ function esconde() {
 // Menu do menu
 
 function showMenu1() {
-  document.getElementById('linkMenu_1').style.display = 'block';
+  document.getElementById('linkMenu_1').style.display = 'flex';
 }
 
 function hideMenu1() {
@@ -121,7 +121,7 @@ function hideMenu1() {
 }
 
 function showMenu2() {
-  document.getElementById('linkMenu_2').style.display = 'block';
+  document.getElementById('linkMenu_2').style.display = 'flex';
 }
 
 function hideMenu2() {
@@ -129,7 +129,7 @@ function hideMenu2() {
 }
 
 function showMenu3() {
-  document.getElementById('linkMenu_3').style.display = 'block';
+  document.getElementById('linkMenu_3').style.display = 'flex';
 }
 
 function hideMenu3() {
@@ -137,7 +137,7 @@ function hideMenu3() {
 }
 
 function showMenu4() {
-  document.getElementById('linkMenu_4').style.display = 'block';
+  document.getElementById('linkMenu_4').style.display = 'flex';
 }
 
 function hideMenu4() {
@@ -145,7 +145,7 @@ function hideMenu4() {
 }
 
 function showMenu5() {
-  document.getElementById('linkMenu_5').style.display = 'block';
+  document.getElementById('linkMenu_5').style.display = 'flex';
 }
 
 function hideMenu5() {
