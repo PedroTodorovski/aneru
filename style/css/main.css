@@ -27,8 +27,8 @@ body {
             "header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top"
             "header header header header header header header header header header header header"
             "banner banner banner banner banner banner banner banner banner banner banner banner"
-            "menu menu menu main main main main main main main main main"
-            "menu menu menu main main main main main main main main main"
+            "main main main main main main main main main main main main"
+            "main main main main main main main main main main main main"
             "footer footer footer footer footer footer footer footer footer footer footer footer"
             ;
     }
@@ -90,21 +90,12 @@ body {
         grid-area: main;
         background-color: #ffffff;
         position: relative;
-        top: 5rem;
-    }
-
-    .l-menu {
-        grid-area: menu;
-        background-color: #ffffff;
-        position: relative;
-        top: 5rem;
     }
 
     .l-footer {
         grid-area: footer;
         background-color: #00cfd0;
         position: relative;
-        top: 5rem;
     }
 
     /* Header Top */
@@ -366,14 +357,6 @@ body {
         top: 0rem;
         overflow: hidden;
         flex-direction: row;
-    }
-
-    .linkMenu_1 {
-        
-    }
-
-    .linkMenu_2 {
-        
     }
 
     .sectionSub {
@@ -811,19 +794,24 @@ body {
     }
     
     /* The dots/bullets/indicators */
+    .dotSlide {
+        position: relative;
+        top: -3rem;
+    }
+
     .dot {
       cursor:pointer;
       height: 13px;
       width: 13px;
       margin: 0 2px;
-      background-color: #bbb;
+      background-color: #717171;
       border-radius: 50%;
       display: inline-block;
       transition: background-color 0.6s ease;
     }
     
     .active, .dot:hover {
-      background-color: #717171;
+      background-color: #00cfd0;
     }
     
     /* Fading animation */
@@ -844,6 +832,251 @@ body {
     to {opacity: 1}
     }
 
+    /* Main */
+
+    .tituloOfertas {
+        position: relative;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 1.9rem;
+        width: 100%;
+        text-align: center;
+        top: 2rem;
+    }
+
+    .section_produtos {
+        width: 15rem;
+        text-align: center;
+        margin-left: 20px;
+        margin-bottom: 8px;
+    }
+
+    .produto_thumb {
+        float: left;
+        margin-left: 15px;
+        padding: 7px;
+        top: 2rem;
+        position: relative;
+        border: #2f3640 solid 3px;
+        width: 13rem;
+        height: 20rem;
+        box-shadow: #717171 5px 5px;
+    }
+
+    .imagemThumb {
+        position: relative;
+        left: .9rem;
+    }
+
+    .nomeProduto {
+        font-family: 'Titillium Web', sans-serif;
+        text-align: justify;
+        font-size: 1rem;
+        margin: 0;
+        position: relative;
+        top: 2rem;
+        font-weight: 100;
+    }
+
+    .precoProduto {
+        font-family: 'Titillium Web', sans-serif;
+        text-align: left;
+        color: #e84118;
+        position: relative;
+        top: 4rem;
+        margin: 0;
+        font-weight: 300;
+    }
+
+    .linkDetalhes {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: #00cfd0;
+        position: relative;
+        top: 4rem;
+    }
+
+    .linkBtnAddCart {
+        position: relative;
+        top: 2.7rem;
+        margin: 0;
+    }
+
+    .btnAddCart {
+        background: #00cfd0;
+        height: 3rem;
+        width: 3rem;
+        border: none;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .fa-cart-plus {
+        font-size: 1rem;
+    }
+
+    /* PAGINA ---> detalhes.php */
+    /* =============================== */
+    
+    .l-wrapper_3 {
+        display: grid;
+    }
+    
+    .l-wrapper_3 {
+        grid-template-columns: repeat(12, minmax(auto, 1fr));
+        grid-template-rows: 8rem 5rem 50rem 25rem;
+        grid-template-areas:
+            "header-top_3 header-top_3 header-top_3 header-top_3 header-top_3 header-top_3 header-top_3 header-top_3 header-top_3 header-top_3 header-top_3 header-top_3"
+            "header_3 header_3 header_3 header_3 header_3 header_3 header_3 header_3 header_3 header_3 header_3 header_3"
+            "main_3 main_3 main_3 main_3 main_3 main_3 main_3 main_3 main_3 main_3 main_3 main_3"
+            "footer_3 footer_3 footer_3 footer_3 footer_3 footer_3 footer_3 footer_3 footer_3 footer_3 footer_3 footer_3"
+            ;
+    }
+
+    .l-header-top_3 {
+        grid-area: header-top_3;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+        mix-blend-mode: multiply;
+    }
+
+    .l-header_3 {
+        grid-area: header_3;
+        background-color: #2f3640;
+        width: 100%;
+        z-index: 2;
+        top: 5rem;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #2f3640;
+        z-index: 2;
+        height: 5rem;
+    }
+
+    .after {
+        position: relative;
+        width: 100%;
+        height: 0rem;
+        display: none;
+    }
+
+    .after::after {
+        content: '';
+        display: block;
+        position: fixed;
+        z-index: 1;
+        bottom: .6rem;
+        border-top: 2.5em solid #00cfd0; 
+        border-left: 30px solid transparent; 
+        border-right: 30px solid transparent; 
+        height: 0; 
+        width: 30em; 
+        top: 5rem;
+        left: 30%;
+    }
+
+    .l-main_3 {
+        grid-area: main_3;
+        background-color: #ffffff;
+        position: relative;
+    }
+
+    .l-footer_3 {
+        grid-area: footer_3;
+        background-color: #00cfd0;
+        position: relative;
+    }
+
+    .produtoThumbDetalhe {
+        position: relative;
+        width: 100%;
+    }
+
+    .imagemThumbDetalhe {
+        position: relative;
+        left: 7rem;
+    }
+
+    .nomeProdutoDetalhe {
+        position: relative;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 2.7rem;
+        width: 50%;
+        text-align: center;
+        left: 43.8vw;
+        top: 4.6rem;
+        margin: 0;
+    }
+
+    .linkbtnDet1 {
+        position: relative;
+        width: 12%;
+        top: -8.5rem;
+        right: 7.5rem;
+
+        background: #00cfd0;
+    }
+
+    .linkbtnDet2 {
+        position: relative;
+        width: 12%;
+        top: -8.5rem;
+        right: 10rem;
+        background: #82ff05;
+    }
+
+    .linkbtnDet3 {
+        position: relative;
+        width: 12%;
+        top: -8.5rem;
+        right: 12.5rem;
+        background: #00cfd0;
+    }
+
+    .btnAddCartDetalhe {
+        background: transparent;
+        height: 3rem;
+        width: 100%;
+        cursor: pointer;
+        border: none;
+        font-family: 'Titillium Web', sans-serif;
+    }
+
+    .precoProdutoDetalhe {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 2rem;
+        text-align: right;
+        color: #e84118;
+        position: relative;
+        margin: 0;
+        top: -25rem;
+        right: 28.5rem;
+        margin-top: 2rem;
+    }
+
+    .productDescription {
+        width: 100%;
+    }
+
+    .nameDescription {
+        width: 30%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 1.8rem;
+    }
+
+    .descriptionSelf {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 1.1rem;
+        text-align: center;
+    }
 
     /* PAGINA ---> comofuncionamos_2.php */
     /* =============================== */

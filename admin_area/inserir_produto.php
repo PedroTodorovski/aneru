@@ -154,7 +154,7 @@
 
         move_uploaded_file($imagem_produto_tmp, "imagens_produtos/$imagem_produto");
 
-        echo $inserir_produto = "INSERT INTO produtos (produto_nome, produto_marca, produto_cat, produto_subcateg, produto_tipo, produto_preco, produto_desc, produto_keywords, produto_img) 
+        $inserir_produto = "INSERT INTO produtos (produto_nome, produto_marca, produto_cat, produto_subcateg, produto_tipo, produto_preco, produto_desc, produto_keywords, produto_img) 
         VALUES ('$nome_produto', '$marca_produto', '$categoria_produto', '$subcategoria_produto', '$tipo_produto', '$preco_produto', '$descricao_produto', '$keywords_produto', '$imagem_produto')";
 
         $inserir_pro = mysqli_query($con, $inserir_produto);

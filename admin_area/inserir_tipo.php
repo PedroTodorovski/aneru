@@ -63,7 +63,7 @@
             $tipoprod_name = $_POST['tipoprod_name'];
             $subcateg_name = $_POST['subcateg_name'];
 
-            echo $inserir_tipo = "INSERT INTO tipoprod (tipoprod_name, subcateg_id) VALUES ('$tipoprod_name', '$subcateg_name')";
+            $inserir_tipo = "INSERT INTO tipoprod (tipoprod_name, subcateg_id) VALUES ('$tipoprod_name', '$subcateg_name')";
         
             $inserir_type = mysqli_query($con, $inserir_tipo);
 

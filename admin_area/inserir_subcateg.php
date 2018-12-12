@@ -63,7 +63,7 @@
             $nome_subcategoria = $_POST['nome_subcategoria'];
             $nome_categoria = $_POST['nome_categoria'];
 
-            echo $inserir_subcategoria = "INSERT INTO subcateg (subcateg_name, categ_id) VALUES ('$nome_subcategoria', '$nome_categoria')";
+            $inserir_subcategoria = "INSERT INTO subcateg (subcateg_name, categ_id) VALUES ('$nome_subcategoria', '$nome_categoria')";
         
             $inserir_subcateg = mysqli_query($con, $inserir_subcategoria);
 

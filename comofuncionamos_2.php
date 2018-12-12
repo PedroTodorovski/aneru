@@ -4,6 +4,9 @@
     include("functions/main.php");
 
 ?>
+<?php
+    header('Content-Type: text/html; charset=ISO-8859-1');
+?>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -91,16 +94,26 @@
                         <li class="celulaMenuHeader"><a class="linkMenuHeader" href="comofuncionamos_2.php">Como Funcionamos</a></li>
                     </ul>
                     <div id="modalMenuHeader" class="modalMenuHeader" onmouseover="javascript:mostra();" onmouseout="javascript:esconde();">
-                    <div class="categoriasMenu">
+                        <div class="categoriasMenu">
                         <ul class="listaCategoriasMenu">
-                            <!-- <li class="celulaCategoriasMenu">Mercado</li>
-                            <li class="celulaCategoriasMenu">Eletrônicos</li>
-                            <li class="celulaCategoriasMenu">Oficina</li>
-                            <li class="celulaCategoriasMenu">Camping</li>
-                            <li class="celulaCategoriasMenu">Esportes</li> -->
                             <?php buscarCategs(); ?>
                         </ul>
-                    </div>
+                        <div id='linkMenu_1' class='linkMenuGeral linkMenu_1' onmouseover='javascript:showMenu1(); ' onmouseout='javascript:hideMenu1();'>
+                            <?php buscarSubCateg(1); ?>
+                        </div>
+                        <div id='linkMenu_2' class='linkMenuGeral linkMenu_2' onmouseover='javascript:showMenu2(); ' onmouseout='javascript:hideMenu2();'>
+                            <?php buscarSubCateg(2); ?>
+                        </div>
+                        <div id='linkMenu_3' class='linkMenuGeral linkMenu_3' onmouseover='javascript:showMenu3(); ' onmouseout='javascript:hideMenu3();'>
+                            <?php buscarSubCateg(3); ?>
+                        </div>
+                        <div id='linkMenu_4' class='linkMenuGeral linkMenu_4' onmouseover='javascript:showMenu4(); ' onmouseout='javascript:hideMenu4();'>
+                            <?php buscarSubCateg(4); ?>
+                        </div>
+                        <div id='linkMenu_5' class='linkMenuGeral linkMenu_5' onmouseover='javascript:showMenu5(); ' onmouseout='javascript:hideMenu5();'>
+                            <?php buscarSubCateg(5); ?>
+                        </div>
+                        </div>
                     </div>
             <div class="after" id="after"></div>
             <div class="buscaBox" id="buscaBox">

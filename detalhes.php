@@ -19,8 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">     
 </head>
 <body>
-    <div class="l-wrapper">
-        <div class="l-header-top">
+    <div class="l-wrapper_3">
+        <div class="l-header-top_3">
                 <div class="redesSociais">
                         <ul class="listaRedes">
                             <li class="celulaListaRedes">
@@ -80,7 +80,7 @@
                 </form>
             </div>    
         </div>
-        <div class="l-header" id="headerSticky">
+        <div class="l-header_3" id="headerSticky">
                 <ul class="usuarioHeader">
                     <li class="celulaUsuaurioHeader"><a class="linkUsuaurioHeader" href=""><i class="fas fa-shopping-cart"></i></a></li>
                     <li id="btnModal" class="celulaUsuaurioHeader"><a class="linkUsuaurioHeader" href="#">Entrar</a></li>
@@ -120,9 +120,6 @@
                         </button>
                 </form>
             </div>
-            
-        </div>
-        <div class="l-banner">
                 <div id="modal" class="modal">
                     <div class="modal-content">
                             <span id="buttonclose" class="close">&times;</span>
@@ -160,51 +157,48 @@
                         </form>
                     </div>
                 </div>
-                <div class="slideshow-container">
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">1 / 3</div>
-                            <img class="imgSlide" src="img/ecommerce.jpg">
-                            <div class="divBtnDentroSlide">
-                                <!-- <button class="btnDentroSlide"><a class="linkBtnDentroSlide" href="#">Compre já!</a></button> -->
-                            </div>
-                        </div>
-                    
-                        <div class="mySlides fade">
-                            <div class="numbertext">2 / 3</div>
-                            <img class="imgSlide" src="img/computador.jpg">
-                            <div class="divBtnDentroSlide">
-                                <!-- <button class="btnDentroSlide"><a class="linkBtnDentroSlide" href="#">Compre já!</a></button> -->
-                            </div>
-                        </div>
-                    
-                        <div class="mySlides fade">
-                            <div class="numbertext">3 / 3</div>
-                            <img class="imgSlide" src="img/shopping.jpg">
-                            <div class="divBtnDentroSlide">
-                                <!-- <button class="btnDentroSlide"><a class="linkBtnDentroSlide" href="#">Compre já!</a></button> -->
-                            </div>
-                        </div>
-                    
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    
-                      </div>
-                      <br>
-                    
-                      <div class="dotSlide" style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                    </div>
-        </div>
-        <div class="l-main">
-            <h2 class="tituloOfertas">Ofertas imperdíveis!</h2>
-            <div class="section_products">
-                <?php buscaPro(); ?>
             </div>
+        <div class="l-main_3">
+    <?php
+
+    if(isset($_GET['id_prod'])) {
+
+        $produto_id = $_GET['id_prod'];
+
+        $busca_prod = "SELECT * FROM produtos WHERE produto_id = $produto_id";
+
+        $run_prod = mysqli_query($con, $busca_prod);
+
+        while ($row_prod = mysqli_fetch_array($run_prod)) {
+            
+            $prod_id = $row_prod['produto_id'];
+            $prod_nome = $row_prod['produto_nome'];
+            $prod_preco = $row_prod['produto_preco'];
+            $prod_desc = $row_prod['produto_desc'];
+            $prod_img = $row_prod['produto_img'];
+
+            echo "<div class='produtoThumbDetalhe'>
+            
+                <h2 class='nomeProdutoDetalhe'>$prod_nome</h2>
+
+                <img class='imagemThumbDetalhe' src='admin_area/imagens_produtos/$prod_img' width='500' height='500'>
+
+                <p class='precoProdutoDetalhe'><b> R$ $prod_preco </b></p>
+
+                <a class='linkbtnDet1' href='index.php?id_prod=$prod_id' style='float:right;'><button class='btnAddCartDetalhe'><i class='fas fa-cart-plus'></i> Adiconar</button></a>
+                <a class='linkbtnDet2' href='#' style='float:right;'><button class='btnAddCartDetalhe'><i class='far fa-credit-card'></i> Comprar</button></a>
+                <a class='linkbtnDet3' href='index.php' style='float:right;'><button class='btnAddCartDetalhe'><i class='fas fa-arrow-left'></i> Voltar</button></a>
+
+            </div>
+            <div class='productDescription'>
+                <h3 class='nameDescription'>Descricao do Produto</h3>
+                <p class='descriptionSelf'>$prod_desc</p>
+            </div>";
+        }
+    }
+    ?>
         </div>
-        <div class="l-footer">
+        <div class="l-footer_3">
 
         </div>
     </div>

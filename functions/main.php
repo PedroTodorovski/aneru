@@ -78,10 +78,38 @@ if(mysqli_connect_errno()) {
             $tipo_id = $row_tipo['tipoprod_id'];
             $tipo_name = $row_tipo['tipoprod_name'];
 
-            $str = $str."$tipo_name";
+            $str = $str."$tipo_name<br>";
 
         }
         return $str;
+    }
+
+    function buscaPro() {
+
+        global $con;
+
+        $busca_prod = "SELECT * FROM produtos ORDER BY RAND() LIMIT 0,6";
+
+        $run_prod = mysqli_query($con, $busca_prod);
+    
+        while ($row_prod = mysqli_fetch_array($run_prod)) {
+            
+            $prod_id = $row_prod['produto_id'];
+            $prod_nome = $row_prod['produto_nome'];
+            $prod_preco = $row_prod['produto_preco'];
+            $prod_img = $row_prod['produto_img'];
+
+            echo "<div class='produto_thumb'>
+            
+                <img class='imagemThumb' src='admin_area/imagens_produtos/$prod_img' width='180' height='180'>
+                <h4 class='nomeProduto'>$prod_nome</h4>
+                <p class='precoProduto'><b> R$ $prod_preco </b></p>
+
+                <a href='detalhes.php?id_prod=$prod_id' style='float:left;' class='linkDetalhes'>Detalhes</a>
+                <a class='linkBtnAddCart' href='index.php?id_prod=$prod_id' style='float:right;'><button class='btnAddCart'><i class='fas fa-cart-plus'></i></button></a>
+
+            </div>";
+        }
     }
 
 ?>

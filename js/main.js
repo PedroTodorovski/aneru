@@ -92,16 +92,6 @@ function showSlides() {
     setTimeout(showSlides, 3000); // Change image every 2 seconds
 }
 
-// Menu
-
-// function toggle_visibility(id) {
-//   var e = document.getElementById(id);
-//   if(e.style.display == 'block')
-//      e.style.display = 'none';
-//   else
-//      e.style.display = 'block';
-// }
-
 function mostra() {
   document.getElementById('modalMenuHeader').style.display = 'block';
 }
@@ -151,3 +141,5 @@ function showMenu5() {
 function hideMenu5() {
   document.getElementById('linkMenu_5').style.display = 'none';
 }
+
+// STICK SLIDER

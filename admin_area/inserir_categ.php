@@ -39,7 +39,7 @@
         
             $nome_categoria = $_POST['nome_categoria'];
 
-            echo $inserir_categoria = "INSERT INTO categorias (categ_titulo) VALUES ('$nome_categoria')";
+            $inserir_categoria = "INSERT INTO categorias (categ_titulo) VALUES ('$nome_categoria')";
         
             $inserir_categ = mysqli_query($con, $inserir_categoria);
 
