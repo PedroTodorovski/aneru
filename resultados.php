@@ -13,12 +13,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Aneru</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style/css/main.css" />  
+    <link rel="stylesheet" type="text/css" href="style/css/main.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">             
-    <link rel="stylesheet" href="OwlCarousel2-2.3.4\dist\assets\owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="OwlCarousel2-2.3.4\dist\assets\owl.theme.default.min.css" type="text/css">
     <script type="text/javascript" src="js/main.js" async></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">     
 </head>
 <body>
     <div class="l-wrapper">
@@ -162,77 +160,45 @@
                         </form>
                     </div>
                 </div>
-                <div class="slideshow-container">
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">1 / 3</div>
-                            <img class="imgSlide" src="img/ecommerce.jpg">
-                            <div class="divBtnDentroSlide">
-                                <!-- <button class="btnDentroSlide"><a class="linkBtnDentroSlide" href="#">Compre já!</a></button> -->
-                            </div>
-                        </div>
-                    
-                        <div class="mySlides fade">
-                            <div class="numbertext">2 / 3</div>
-                            <img class="imgSlide" src="img/computador.jpg">
-                            <div class="divBtnDentroSlide">
-                                <!-- <button class="btnDentroSlide"><a class="linkBtnDentroSlide" href="#">Compre já!</a></button> -->
-                            </div>
-                        </div>
-                    
-                        <div class="mySlides fade">
-                            <div class="numbertext">3 / 3</div>
-                            <img class="imgSlide" src="img/shopping.jpg">
-                            <div class="divBtnDentroSlide">
-                                <!-- <button class="btnDentroSlide"><a class="linkBtnDentroSlide" href="#">Compre já!</a></button> -->
-                            </div>
-                        </div>
-                    
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    
-                      </div>
-                      <br>
-                    
-                      <div class="dotSlide" style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                    </div>
-        </div>
         <div class="l-main">
-            <h2 class="tituloOfertas">Ofertas imperdiveis!</h2>
-            <div class="owl-carousel owl-theme sectionSlideProd owl-dots">
-                <?php buscaPro(); ?>
-            </div>
-        </div>
-        <div class="l-footer">            
-    
-        </div>
-    </div>
-    <script src="OwlCarousel2-2.3.4\docs_src\assets\vendors\jquery.min.js" type="text/javascript"></script>
-    <script src="OwlCarousel2-2.3.4\dist\owl.carousel.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    
-        $(document).ready(function(){
-        $('.owl-carousel').owlCarousel({
-            loop:false,
-            margin:10,
-            nav:true,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:3
-                },
-                1000:{
-                    items:6
+            <div class="section_products">
+                <?php
+
+                if(isset($_GET['search'])) {
+
+                $busca_query = $_GET['buscaBarra'];
+
+                $busca_prod = "SELECT * FROM produtos WHERE produto_keywords LIKE '%$busca_query%'";
+
+                $run_prod = mysqli_query($con, $busca_prod);
+
+                while ($row_prod = mysqli_fetch_array($run_prod)) {
+                    
+                    $prod_id = $row_prod['produto_id'];
+                    $prod_nome = $row_prod['produto_nome'];
+                    $prod_preco = $row_prod['produto_preco'];
+                    $prod_img = $row_prod['produto_img'];
+
+                    echo "<div class='produto_thumb'>
+                    
+                        <img class='imagemThumb' src='admin_area/imagens_produtos/$prod_img' width='180' height='180'>
+                        <h4 class='nomeProduto'>$prod_nome</h4>
+                        <p class='precoProduto'><b> R$ $prod_preco </b></p>
+
+                        <a href='detalhes.php?id_prod=$prod_id' style='float:left;' class='linkDetalhes'>Detalhes</a>
+                        <a class='linkBtnAddCart' href='index.php?id_prod=$prod_id' style='float:right;'><button class='btnAddCart'><i class='fas fa-cart-plus'></i></button></a>
+
+                    </div>";
                 }
             }
-        })
-        });
-    
-    </script>
+
+            ?>
+            </div>
+        </div>
+        <div class="l-footer">
+
+        </div>
+    </div>
+</body>
 </body>
 </html>

@@ -22,12 +22,11 @@ body {
 @media(min-width: 30em) and (max-width: 99.9em) {
     .l-wrapper {
         grid-template-columns: repeat(12, minmax(auto, 1fr));
-        grid-template-rows: 8rem 5rem 36rem 65rem 20rem 25rem;
+        grid-template-rows: 8rem 5rem 36rem 100rem 25rem;
         grid-template-areas:
             "header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top header-top"
             "header header header header header header header header header header header header"
             "banner banner banner banner banner banner banner banner banner banner banner banner"
-            "main main main main main main main main main main main main"
             "main main main main main main main main main main main main"
             "footer footer footer footer footer footer footer footer footer footer footer footer"
             ;
@@ -90,6 +89,7 @@ body {
         grid-area: main;
         background-color: #ffffff;
         position: relative;
+        overflow: hidden;
     }
 
     .l-footer {
@@ -843,28 +843,27 @@ body {
         top: 2rem;
     }
 
-    .section_produtos {
-        width: 15rem;
-        text-align: center;
-        margin-left: 20px;
-        margin-bottom: 8px;
+    .sectionSlideProd {
+        position: relative;
+        height: auto;
+        top: 3rem;
     }
 
     .produto_thumb {
-        float: left;
-        margin-left: 15px;
         padding: 7px;
-        top: 2rem;
-        position: relative;
-        border: #2f3640 solid 3px;
-        width: 13rem;
+        width: auto;
         height: 20rem;
-        box-shadow: #717171 5px 5px;
+        margin-bottom: .3rem;
+        margin-top: .3rem;
+        background: #ffffff;
+    }
+
+    .produto_thumb:hover {
+        box-shadow: 0px 5px 5px 5px rgba(155, 154, 154, 0.5);
     }
 
     .imagemThumb {
         position: relative;
-        left: .9rem;
     }
 
     .nomeProduto {
@@ -881,8 +880,8 @@ body {
         font-family: 'Titillium Web', sans-serif;
         text-align: left;
         color: #e84118;
-        position: relative;
-        top: 4rem;
+        position: absolute;
+        top: 17.5rem;
         margin: 0;
         font-weight: 300;
     }
@@ -892,13 +891,14 @@ body {
         font-size: 1.2rem;
         text-decoration: none;
         color: #00cfd0;
-        position: relative;
-        top: 4rem;
+        position: absolute;
+        top: 19rem;
     }
 
     .linkBtnAddCart {
-        position: relative;
-        top: 2.7rem;
+        position: absolute;
+        top: 17.5rem;
+        left: 10rem;
         margin: 0;
     }
 
@@ -914,6 +914,109 @@ body {
     .fa-cart-plus {
         font-size: 1rem;
     }
+
+    .owl-dots {
+        /* color: #e84118; */
+    }
+
+    /* PAGINA ---> subcategorias.php */
+    /* =============================== */
+    
+    .l-wrapper_4 {
+        display: grid;
+    }
+    
+    .l-wrapper_4 {
+        grid-template-columns: repeat(12, minmax(auto, 1fr));
+        grid-template-rows: 8rem 5rem auto 25rem;
+        grid-template-areas:
+            "header-top_4 header-top_4 header-top_4 header-top_4 header-top_4 header-top_4 header-top_4 header-top_4 header-top_4 header-top_4 header-top_4 header-top_4"
+            "header_4 header_4 header_4 header_4 header_4 header_4 header_4 header_4 header_4 header_4 header_4 header_4"
+            "main_4 main_4 main_4 main_4 main_4 main_4 main_4 main_4 main_4 main_4 main_4 main_4"
+            "footer_4 footer_4 footer_4 footer_4 footer_4 footer_4 footer_4 footer_4 footer_4 footer_4 footer_4 footer_4"
+            ;
+    }
+
+    .l-header-top_4 {
+        grid-area: header-top_4;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+        mix-blend-mode: multiply;
+    }
+
+    .l-header_4 {
+        grid-area: header_4;
+        background-color: #2f3640;
+        width: 100%;
+        z-index: 2;
+        top: 5rem;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #2f3640;
+        z-index: 2;
+        height: 5rem;
+    }
+
+    .after {
+        position: relative;
+        width: 100%;
+        height: 0rem;
+        display: none;
+    }
+
+    .after::after {
+        content: '';
+        display: block;
+        position: fixed;
+        z-index: 1;
+        bottom: .6rem;
+        border-top: 2.5em solid #00cfd0; 
+        border-left: 30px solid transparent; 
+        border-right: 30px solid transparent; 
+        height: 0; 
+        width: 30em; 
+        top: 5rem;
+        left: 30%;
+    }
+
+    .l-main_4 {
+        grid-area: main_4;
+        background-color: #ffffff;
+        position: relative;
+    }
+
+    .l-footer_4 {
+        grid-area: footer_4;
+        background-color: #00cfd0;
+        position: relative;
+    }
+
+    .produto_thumb_subcateg {
+        float: left;
+        margin-left: 15px;
+        padding: 7px;
+        top: 2rem;
+        position: relative;
+        border: #2f3640 solid 3px;
+        width: 13rem;
+        height: 20rem;
+        box-shadow: #717171 5px 5px;
+        margin-bottom: 4rem;
+        left: 2.5%;
+    }
+
+    .mensagemVazia {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        font-family: 'Titillium Web', sans-serif;
+    }
+
 
     /* PAGINA ---> detalhes.php */
     /* =============================== */

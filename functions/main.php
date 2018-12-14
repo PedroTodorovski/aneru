@@ -60,7 +60,7 @@ if(mysqli_connect_errno()) {
 
 
 
-            echo '<div class="sectionSub"><a class="linkSubCatergoria" href="produto/'.$subcateg_name.'.php">'.$subcateg_name.'</a><div class="sectionTipo"><a class="linkTipo" href="produto/'.$subcateg_name.'.php">'.$tip.'</a></div></div>';
+            echo '<div class="sectionSub"><a class="linkSubCatergoria" href="subcategorias.php?subcateg='.$subcateg_id.'">'.$subcateg_name.'</a><div class="sectionTipo">'.$tip.'</div></div>';
             $i++;
         }
     }
@@ -78,7 +78,7 @@ if(mysqli_connect_errno()) {
             $tipo_id = $row_tipo['tipoprod_id'];
             $tipo_name = $row_tipo['tipoprod_name'];
 
-            $str = $str."$tipo_name<br>";
+            $str = $str."<a class='linkTipo' href='tipos.php?tipo=".$tipo_id."'>".$tipo_name."</a>";
 
         }
         return $str;
@@ -86,9 +86,14 @@ if(mysqli_connect_errno()) {
 
     function buscaPro() {
 
+        if(!isset($_GET['subcateg'])) {
+            if(!isset($_GET['tipo'])) {
+
+    
+
         global $con;
 
-        $busca_prod = "SELECT * FROM produtos ORDER BY RAND() LIMIT 0,6";
+        $busca_prod = "SELECT * FROM produtos ORDER BY RAND() LIMIT 0,12";
 
         $run_prod = mysqli_query($con, $busca_prod);
     
@@ -110,6 +115,8 @@ if(mysqli_connect_errno()) {
 
             </div>";
         }
+        }
+    }
     }
 
 ?>
