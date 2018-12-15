@@ -1,3 +1,4 @@
+
 <!DOCTYPE>
 <?php
 
@@ -161,7 +162,7 @@
         <div class="l-main_3">
     <?php
 
-    if(isset($_GET['id_prod'])) {
+    if(isset($_GET['id_prod'])):
 
         $produto_id = $_GET['id_prod'];
 
@@ -169,14 +170,25 @@
 
         $run_prod = mysqli_query($con, $busca_prod);
 
-        while ($row_prod = mysqli_fetch_array($run_prod)) {
+        while ($row_prod = mysqli_fetch_array($run_prod)):
             
             $prod_id = $row_prod['produto_id'];
             $prod_nome = $row_prod['produto_nome'];
             $prod_preco = $row_prod['produto_preco'];
             $prod_desc = $row_prod['produto_desc'];
             $prod_img = $row_prod['produto_img'];
-
+           
+       
+       
+            $testar = "https://aneru.000webhostapp.com/detalhes.php?id_prod=";
+            $aux = 'qr_img0.50j/php/qr_img.php?';
+            $aux .= 'd=';
+            $aux .= $testar;
+            $aux.= $prod_id.'&';
+            $aux .= 'e=H&';
+            $aux .= 's=5&';
+            $aux .= 't=J';
+     
             echo "<div class='produtoThumbDetalhe'>
             
                 <h2 class='nomeProdutoDetalhe'>$prod_nome</h2>
@@ -190,15 +202,19 @@
                 <a class='linkbtnDet3' href='index.php' style='float:right;'><button class='btnAddCartDetalhe'><i class='fas fa-arrow-left'></i> Voltar</button></a>
 
             </div>
-            <div class='productDescription'>
-                <h3 class='nameDescription'>Descricao do Produto</h3>
-                <p class='descriptionSelf'>$prod_desc</p>
-            </div>";
-        }
-    }
+
+ ";
     ?>
+<div class='productDescription' style=' border: 0.5px solid #000;'>
+            <img src="<?php echo $aux; ?>"/>
         </div>
-        <div class="l-footer_3">
+    <?php
+
+       endwhile;
+    endif;
+    ?>         
+        </div>
+        
 
         </div>
     </div>

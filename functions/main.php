@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","root","senhadopedro","aneru");
+$con = mysqli_connect("localhost","root","","aneru");
 
 if(mysqli_connect_errno()) {
     echo "ERRO: " . mysqli_connect_error();
