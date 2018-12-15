@@ -841,6 +841,14 @@ body {
         width: 100%;
         text-align: center;
         top: 2rem;
+        background-image: linear-gradient(to right, #82ff05 , #00cfd0);
+        padding: 10px 0;
+        color: #2f3640;
+    }
+
+    .tOff2 {
+        position: relative;
+        margin-top: 4rem;
     }
 
     .sectionSlideProd {
@@ -856,6 +864,9 @@ body {
         margin-bottom: .3rem;
         margin-top: .3rem;
         background: #ffffff;
+        border-top: #00cfd0 solid 4px;
+        border-bottom: #00cfd0 solid 4px;
+        transition: 200ms box-shadow ease-in-out;
     }
 
     .produto_thumb:hover {
@@ -874,6 +885,7 @@ body {
         position: relative;
         top: 2rem;
         font-weight: 100;
+        color: black;
     }
 
     .precoProduto {
@@ -884,6 +896,7 @@ body {
         top: 17.5rem;
         margin: 0;
         font-weight: 300;
+        font-size: 1rem;
     }
 
     .linkDetalhes {
@@ -916,7 +929,17 @@ body {
     }
 
     .owl-dots {
-        /* color: #e84118; */
+        background: #ffffff;
+        color: #2f3640;
+        font-size: 2rem;
+    }
+
+    .owl-dots button span {
+        display: none;
+    }
+
+    .owl-item {
+        background: #ffffff;
     }
 
     /* PAGINA ---> subcategorias.php */

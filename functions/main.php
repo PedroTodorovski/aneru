@@ -6,6 +6,113 @@ if(mysqli_connect_errno()) {
     echo "ERRO: " . mysqli_connect_error();
     }
 
+    function busca_ip() {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        return $ipaddress;
+    }
+
+    function carrinho() {
+        if(isset($_GET['add_carrinho'])) {
+            
+            global $con;
+
+            $ip = busca_ip();
+
+            $pro_id = $_GET['add_carrinho'];
+
+            $check_pro = "SELECT * FROM carrinho WHERE end_ip='$ip' AND id_pro='$pro_id'";
+
+            $run_check = mysqli_query($con, $check_pro);
+
+            if(mysqli_num_rows($run_check)>0) {
+                echo "";
+            } else {
+                $insere_pro = "INSERT INTO carrinho (id_pro,end_ip) VALUES ('$pro_id','$ip')";
+
+                $run_pro = mysqli_query($con, $insere_pro);
+
+                echo "<script>window.open('index.php','_self')</script>";
+            }
+        }
+    }
+
+    function total_itens() {
+        
+        if(isset($_GET['add_carrinho'])) {
+            
+            global $con;
+
+            $ip = busca_ip();
+
+            $busca_itens = "SELECT * FROM carrinho WHERE end_ip='$ip'";
+
+            $run_itens = mysqli_query($con, $busca_itens);
+
+            $conta_itens = mysqli_num_rows($run_itens);
+        } else {
+
+            global $con;
+
+            $ip = busca_ip();
+
+            $busca_itens = "SELECT * FROM carrinho WHERE end_ip='$ip'";
+
+            $run_itens = mysqli_query($con, $busca_itens);
+
+            $conta_itens = mysqli_num_rows($run_itens);
+        }
+
+        echo "$conta_itens";
+    }
+
+    function preco_total() {
+
+        $total = 0;
+
+        global $con;
+
+        $ip = busca_ip();
+
+        $preco_select = "SELECT * FROM carrinho WHERE end_ip='$ip'";
+
+        $run_preco = mysqli_query($con, $preco_select);
+
+        while($p_preco=mysqli_fetch_array($run_preco)) {
+
+            $pro_id = $p_preco['id_pro'];
+
+            $preco_pro = "SELECT * FROM produtos WHERE produto_id='$pro_id'";
+
+            $run_pro_preco = mysqli_query($con, $preco_pro);
+
+            while($pp_preco=mysqli_fetch_array($run_pro_preco)) {
+
+                $preco_produto = array($pp_preco['produto_preco']);
+
+                $valores = array_sum($preco_produto);
+
+                $total +=$valores;
+        }
+    }
+
+        echo "R$".$total;
+    }
+
     function buscarCategs() {
 
         global $con;
@@ -108,10 +215,45 @@ if(mysqli_connect_errno()) {
             
                 <img class='imagemThumb' src='admin_area/imagens_produtos/$prod_img' width='180' height='180'>
                 <h4 class='nomeProduto'>$prod_nome</h4>
-                <p class='precoProduto'><b> R$ $prod_preco </b></p>
+                <p class='precoProduto'>R$ $prod_preco</p>
 
                 <a href='detalhes.php?id_prod=$prod_id' style='float:left;' class='linkDetalhes'>Detalhes</a>
-                <a class='linkBtnAddCart' href='index.php?id_prod=$prod_id' style='float:right;'><button class='btnAddCart'><i class='fas fa-cart-plus'></i></button></a>
+                <a class='linkBtnAddCart' href='index.php?add_carrinho=$prod_id' style='float:right;'><button class='btnAddCart'><i class='fas fa-cart-plus'></i></button></a>
+
+            </div>";
+        }
+        }
+    }
+    }
+
+    function buscaPro2() {
+
+        if(!isset($_GET['subcateg'])) {
+            if(!isset($_GET['tipo'])) {
+
+    
+
+        global $con;
+
+        $busca_prod = "SELECT * FROM produtos WHERE produto_subcateg = 9 ORDER BY RAND() LIMIT 0,12";
+
+        $run_prod = mysqli_query($con, $busca_prod);
+    
+        while ($row_prod = mysqli_fetch_array($run_prod)) {
+            
+            $prod_id = $row_prod['produto_id'];
+            $prod_nome = $row_prod['produto_nome'];
+            $prod_preco = $row_prod['produto_preco'];
+            $prod_img = $row_prod['produto_img'];
+
+            echo "<div class='produto_thumb'>
+            
+                <img class='imagemThumb' src='admin_area/imagens_produtos/$prod_img' width='180' height='180'>
+                <h4 class='nomeProduto'>$prod_nome</h4>
+                <p class='precoProduto'>R$ $prod_preco</p>
+
+                <a href='detalhes.php?id_prod=$prod_id' style='float:left;' class='linkDetalhes'>Detalhes</a>
+                <a class='linkBtnAddCart' href='index.php?add_carrinho=$prod_id' style='float:right;'><button class='btnAddCart'><i class='fas fa-cart-plus'></i></button></a>
 
             </div>";
         }
