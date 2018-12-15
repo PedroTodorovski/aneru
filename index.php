@@ -84,7 +84,7 @@
         </div>
         <div class="l-header" id="headerSticky">
                 <ul class="usuarioHeader">
-                    <li class="celulaUsuaurioHeader"><a class="linkUsuaurioHeader" href=""><i class="fas fa-shopping-cart"></i></a></li>
+                    <li class="celulaUsuaurioHeader"><a class="linkUsuaurioHeader" href="carrinho.php"><?php preco_total(); ?> / <?php total_itens(); ?><i class="fas fa-shopping-cart"></i></a></li>
                     <li id="btnModal" class="celulaUsuaurioHeader"><a class="linkUsuaurioHeader" href="#">Entrar</a></li>
                 </ul>
                 <ul class="menuHeader clearfix">
@@ -201,9 +201,14 @@
                     </div>
         </div>
         <div class="l-main">
-            <h2 class="tituloOfertas">Ofertas imperdiveis!</h2>
-            <div class="owl-carousel owl-theme sectionSlideProd owl-dots">
+            <?php carrinho(); ?>
+            <h2 class="tituloOfertas">OFERTAS IMPERDÍVEIS!</h2>
+            <div class="owl-carousel owl-theme sectionSlideProd owl-dots owl-item">
                 <?php buscaPro(); ?>
+            </div>
+            <h2 class="tituloOfertas tOff2">O NATAL CHEGOU!</h2>
+            <div class="owl-carousel owl-theme sectionSlideProd owl-dots owl-item">
+                <?php buscaPro2(); ?>
             </div>
         </div>
         <div class="l-footer">            
